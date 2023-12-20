@@ -1,0 +1,8 @@
+export const CURRENT_USER_TAG = 'CURRENT_USER_TAG'
+export const CURRENT_MEMBER_TAG = 'CURRENT_MEMBER_TAG'
+export const POST_TAG = 'POST_TAG'
+export const COUNT_POST_TAG = 'COUNT_POST_TAG'
+export const COMMENT_TAG = 'COMMENT_TAG'
+export const CHILDREN_COMMENT_TAG = 'CHILDREN_COMMENT_TAG'
+export const MEMBER_TAG = 'MEMBER_TAG'
+export const MESSAGE_TAG = 'MESSAGE_TAG'

@@ -1,0 +1,5 @@
+export { useCommentsQuery, useLazyChildrenCommentQuery, useCreateCommentMutation, commentApi } from './api/comment.api'
+export { type Comment, type CommentId } from './model/comment.model'
+export { CommentCard } from './ui/comment-card/CommentCard'
+export { type CommentCardState } from './ui/comment-card/CommentCardState'
+export { CommentList } from './ui/comment-list/CommentList'

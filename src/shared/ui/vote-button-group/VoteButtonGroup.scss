@@ -1,0 +1,21 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.vote-group {
+  display: flex;
+  align-items: center;
+
+  &__points {
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 900;
+    min-width: 45px;
+    padding: 0 5px;
+    text-align: center;
+  }
+
+  &--sm &__points {
+    font-size: 16px;
+    min-width: 20px;
+  }
+}

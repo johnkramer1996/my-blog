@@ -1,0 +1,70 @@
+// color
+$color-text: #202329;
+$color-primary: #0071bc;
+$color-primary-hover: lighten($color-primary, 10%);
+$color-secondary: #ffcb05;
+$color-secondary-hover: lighten($color-secondary, 10%);
+$color-dangerous: #f10b34;
+$color-dangerous-hover: lighten($color-dangerous, 10%);
+$color-dark: #000;
+$color-light: #f3f3f3;
+$color-placeholder: #d0d0d0;
+$color-input: #f4f7fb;
+$color-disabled: #f3f3f3;
+$color-error: #f10b34;
+$color-error-light: #ffeaea;
+$color-success: #6fbd15;
+$color-success-hover: lighten($color-success, 10%);
+$color-gray: #bdbdbd;
+// color
+// font
+$font: 'Raleway';
+// font
+// text
+$text-font-size: 16px;
+$text-font-family: $font, sans-serif;
+$text-line-height: 1.3;
+$text-font-weigth: 400;
+// text
+// inputs
+$input-height: 48px;
+$input-padding: 16px;
+$input-border-color: #d0cfcf;
+$input-border-radius: 4px;
+$input-mb: 25px;
+$textarea-height: 120px;
+// inputs
+$btn-height: 52px;
+// inputs
+// header
+$header-height: 80px;
+// header
+// section
+$section-padding: 70px;
+// section
+// breakpoints
+$xxs: 370;
+$xs: 480;
+$sm: 576;
+$md: 767;
+$lg: 992;
+$xl: 1230;
+$xxl: 1360;
+$xxxl: 1600;
+$xxxxl: 1920;
+// breakpoints
+// z index
+$z-index-popup: 99;
+// z index
+$shadow-light-primary: 0px 0px 21px 0px rgba(0, 113, 188, 0.13);
+$container-max-widths: (
+  //
+  xs: 480px,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+  // xxl: 1310px,
+  // xxxl: 1560px,
+  // xxxxl: 1870px
+);

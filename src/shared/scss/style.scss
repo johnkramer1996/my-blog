@@ -1,0 +1,49 @@
+@import './vars';
+@import './mixin';
+@import './fonts';
+@import './reset';
+@import './base';
+
+// content
+@import './components/heading';
+@import './components/text';
+@import './components/items';
+@import './components/image';
+// content
+// form
+@import './components/form';
+@import './components/input-text';
+@import './components/input-radio';
+@import './components/input-file';
+@import './components/button';
+// form
+// components
+@import './components/section';
+// components
+
+.container {
+  @include xl-min {
+    max-width: 1200px;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.tabs {
+  text-align: center;
+  &--buttons {
+    border: 1px solid $color-text;
+    border-radius: 5px;
+    display: inline-flex;
+    margin-bottom: 10px;
+  }
+}

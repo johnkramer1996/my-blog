@@ -1,0 +1,113 @@
+.input {
+  position: relative;
+  text-align: left;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    margin: auto;
+  }
+
+  &-label {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  &-head {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    height: $input-height;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    border: 1px solid transparent;
+    box-shadow: none;
+    cursor: pointer;
+    text-align: left;
+    font-weight: 400;
+    background-color: $color-input;
+    border-radius: 5px;
+    font-family: $text-font-family;
+    color: $color-text;
+    font-size: $text-font-size;
+    transition: border 0.3s, background-color 0.3s;
+  }
+
+  &-error {
+    font-size: 14px;
+    color: $color-error;
+    margin-top: 5px;
+    line-height: 1.3;
+    transition: opacity 0.3s, visibility 0.3s;
+    text-align: left;
+  }
+}
+
+.input {
+  &--filled &__input,
+  &__input:focus {
+    background-color: #fff;
+    border-color: $color-primary;
+  }
+
+  &--success {
+    .input__input {
+      border-color: $color-success;
+    }
+
+    &::before {
+      // background-color: $color-success;
+    }
+  }
+
+  &--error {
+    .input__input {
+      border-color: $color-error !important;
+    }
+    &::before {
+      // background-color: $color-error;
+    }
+  }
+}
+
+.input {
+  &--textarea {
+    .input__input {
+      height: auto;
+      min-height: $textarea-height;
+      padding-top: 20px;
+      resize: vertical;
+      vertical-align: top;
+
+      @include sm {
+        height: 120px;
+        min-height: 120px;
+      }
+    }
+  }
+
+  &--btn {
+  }
+
+  &--inline {
+    @include md-min {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.input {
+  &--disabled {
+    .input__input {
+      background-color: $color-disabled;
+    }
+  }
+}

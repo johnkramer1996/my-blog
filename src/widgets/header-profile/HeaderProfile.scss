@@ -1,0 +1,50 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.header-profile {
+  position: relative;
+  z-index: 9;
+  &__image {
+    cursor: pointer;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: $shadow-light-primary;
+    width: 130px;
+    opacity: 0;
+    margin-top: 30px;
+    visibility: hidden;
+    transition: all 0.15s;
+    &--open {
+      margin-top: 0;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.3s;
+    }
+
+    &-item {
+    }
+    &-link {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+      padding: 5px 10px;
+      font-size: 10px;
+      text-align: left;
+
+      &--logout {
+        color: $color-error;
+
+        svg {
+        }
+      }
+    }
+  }
+}

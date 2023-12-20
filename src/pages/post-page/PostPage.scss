@@ -1,0 +1,14 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.post {
+  &__image {
+    &::before {
+      padding-top: 42.5%;
+    }
+  }
+
+  &__content {
+    margin-top: 20px;
+  }
+}

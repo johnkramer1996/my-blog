@@ -1,0 +1,21 @@
+.form {
+  &--bg {
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: $shadow-light-primary;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  &__heading {
+    margin-bottom: 30px;
+  }
+
+  &__input {
+    margin-bottom: $input-mb;
+  }
+
+  &__link {
+    margin-top: 20px;
+  }
+}

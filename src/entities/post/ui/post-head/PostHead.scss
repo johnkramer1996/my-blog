@@ -1,0 +1,46 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.post-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+  &--sm &__meta,
+  &--sm &__actions {
+    margin-left: -5px;
+    margin-right: -5px;
+  }
+
+  &--sm &__mate-item,
+  &--sm &__actions > * {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    &-item {
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    > * {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,191 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.image {
+  display: block;
+  width: 100%;
+  position: relative;
+  border-radius: inherit;
+  background-color: $color-placeholder;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    border-radius: inherit;
+    margin: auto;
+    width: 100%;
+    transition: opacity 0.3s;
+  }
+
+  &::before {
+    position: relative;
+    padding-top: 60%;
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  picture,
+  img {
+    border-radius: inherit;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.image {
+  background-color: $color-input;
+
+  &--radius {
+    border-radius: 5px;
+  }
+
+  &--cover,
+  &--contain,
+  &--fill {
+    background: center / cover no-repeat;
+
+    img {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  &--cover {
+    img {
+      object-fit: cover;
+      font-family: 'object-fit: cover;';
+    }
+  }
+
+  &--contain,
+  &--fill {
+    background-color: transparent;
+  }
+
+  &--contain {
+    img {
+      object-fit: contain;
+      font-family: 'object-fit: contain;';
+    }
+  }
+
+  &--fill {
+    img {
+      object-fit: fill;
+      font-family: 'object-fit: fill;';
+    }
+  }
+
+  &--circle {
+    border-radius: 50%;
+
+    &::before {
+      padding-top: 100%;
+    }
+  }
+
+  &--author {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: $color-primary;
+
+    &-lg {
+      width: 100px;
+      height: 100px;
+    }
+
+    &-sm {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.image-hover {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  opacity: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  transition: opacity 0.5s, background-color 0.5s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    transform: scale(5);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+    background: $color-primary center / 30% no-repeat;
+    transition: all 0.3s;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 16px;
+    z-index: 3;
+    opacity: 0;
+    transform: translate(0, -50%);
+    transition: all 0.5s;
+  }
+}
+
+.image-hover {
+  &:hover {
+    opacity: 1;
+    background: rgba($color-dark, 0.5);
+    &::before {
+      transform: scale(1);
+      transition: all 0.5s;
+    }
+  }
+
+  &:active {
+    opacity: 1;
+    background: rgba($color-dark, 0.9);
+
+    &::before {
+      transform: scale(0.75);
+    }
+  }
+
+  &:hover &__text {
+    opacity: 1;
+  }
+  &__text:hover {
+    color: $color-secondary;
+  }
+}

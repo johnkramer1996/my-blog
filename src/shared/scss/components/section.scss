@@ -1,0 +1,11 @@
+.section {
+  position: relative;
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+  background: center top / cover no-repeat;
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+}

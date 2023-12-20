@@ -1,0 +1,49 @@
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-primary {
+  color: $color-primary;
+}
+.text-secondary {
+  color: $color-secondary;
+}
+
+.text-btn {
+}
+
+.text-link {
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+
+  &:hover {
+    color: $color-primary;
+    border-color: $color-primary;
+  }
+
+  &.text-underline {
+    text-decoration: none;
+    border-color: inherit;
+    padding-bottom: 5px;
+
+    &.text-primary {
+      border-color: $color-primary;
+    }
+
+    &.text-secondary {
+      border-color: $color-secondary;
+    }
+
+    &_dashed {
+      border-style: dashed;
+    }
+  }
+}

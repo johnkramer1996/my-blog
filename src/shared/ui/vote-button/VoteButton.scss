@@ -1,0 +1,29 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.vote-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: $color-primary;
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+
+  &--sm {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  &--up#{&}--active {
+    background-color: $color-success;
+  }
+
+  &--down#{&}--active {
+    background-color: $color-error;
+  }
+}

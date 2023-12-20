@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: scrollbar;
+  overflow: auto;
+
+  &.js-popup-active,
+  &.js-menu-active {
+    overflow: hidden;
+  }
+}
+
+body {
+  font-family: $text-font-family, 'Roboto', sans-serif;
+  font-size: $text-font-size;
+  color: $color-text;
+  line-height: $text-line-height;
+  font-weight: $text-font-weigth;
+  background-color: #fff;
+  min-width: 320px;
+  position: relative;
+  overflow: hidden;
+}
+
+button,
+input {
+  font-family: $text-font-family;
+  font-size: $text-font-size;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+input,
+textarea {
+  outline: none;
+
+  &:focus:required:invalid {
+    border-color: red;
+  }
+
+  &:required:valid {
+    border-color: green;
+  }
+}
+
+input,
+textarea,
+button,
+select {
+  appearance: none;
+}
+
+input:focus,
+textarea:focus,
+button:focus,
+select:focus {
+  outline: none;
+}
+
+// hide arrows
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+a {
+  color: $color-text;
+  outline: none;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+*[data-href] {
+  cursor: pointer;
+}
+
+sup {
+  display: inline-block;
+  position: relative;
+  transform: scale(0.55);
+  transform-origin: left 0;
+}
+
+::placeholder {
+  color: $color-placeholder;
+
+  .input_white & {
+    color: #fff;
+  }
+
+  .js-input.js-error & {
+    color: $color-error;
+  }
+}
+
+::selection {
+  background-color: $color-secondary;
+  color: #fff;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+.ai-flex-start {
+  align-items: flex-start;
+}

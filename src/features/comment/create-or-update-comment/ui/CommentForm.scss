@@ -1,0 +1,25 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.comment-form {
+  margin-top: 20px;
+  display: flex;
+
+  &--loading {
+    opacity: 0.8;
+  }
+  &__image {
+    margin-right: 20px;
+  }
+  &__content {
+    display: flex;
+    width: 100%;
+    .form__input {
+      width: 100%;
+      margin-right: 30px;
+    }
+    .btn {
+      min-width: 200px;
+    }
+  }
+}

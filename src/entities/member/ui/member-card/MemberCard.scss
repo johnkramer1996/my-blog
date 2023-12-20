@@ -1,0 +1,21 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.member-card {
+  &__image {
+    margin-bottom: 10px;
+  }
+  &__name {
+    text-align: center;
+    font-size: 18px;
+  }
+  &__list {
+    margin-top: 30px;
+    &-item {
+      margin-top: 10px;
+    }
+    &-label {
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.text-author {
+  display: flex;
+  align-items: center;
+
+  &__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+    &--online {
+      background-color: $color-success;
+    }
+
+    &--offline {
+      background-color: $color-error;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    margin-left: 10px;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

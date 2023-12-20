@@ -1,0 +1,175 @@
+@mixin r($width) {
+  @media only screen and (max-width: #{$width - .5px}) {
+    @content;
+  }
+}
+
+@mixin r-min($width) {
+  @media only screen and (min-width: $width + 'px') {
+    @content;
+  }
+}
+
+@mixin rh($height) {
+  @media only screen and (max-height: #{$height - .5px}) {
+    @content;
+  }
+}
+
+@mixin rh-min($height) {
+  @media only screen and (min-height: $height + 'px') {
+    @content;
+  }
+}
+
+@mixin xxxxl {
+  @include r($xxxxl) {
+    @content;
+  }
+}
+
+@mixin xxxl {
+  @include r($xxxl) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @include r($xxl) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @include r($xl) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @include r($lg) {
+    @content;
+  }
+}
+
+@mixin md {
+  @include r($md) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @include r($sm) {
+    @content;
+  }
+}
+
+@mixin xs {
+  @include r($xs) {
+    @content;
+  }
+}
+
+@mixin xxs {
+  @include r($xxs) {
+    @content;
+  }
+}
+
+@mixin xxxxl-min {
+  @include r-min($xxxxl) {
+    @content;
+  }
+}
+
+@mixin xxxl-min {
+  @include r-min($xxxl) {
+    @content;
+  }
+}
+
+@mixin xxl-min {
+  @include r-min($xxl) {
+    @content;
+  }
+}
+
+@mixin xl-min {
+  @include r-min($xl) {
+    @content;
+  }
+}
+
+@mixin lg-min {
+  @include r-min($lg) {
+    @content;
+  }
+}
+
+@mixin md-min {
+  @include r-min($md) {
+    @content;
+  }
+}
+
+@mixin sm-min {
+  @include r-min($sm) {
+    @content;
+  }
+}
+
+@mixin xs-min {
+  @include r-min($xs) {
+    @content;
+  }
+}
+
+@mixin xxs-min {
+  @include r-min($xxs) {
+    @content;
+  }
+}
+
+@mixin lg-only {
+  @include xl {
+    @include lg-min {
+      @content;
+    }
+  }
+}
+
+@mixin md-only {
+  @include lg {
+    @include md-min {
+      @content;
+    }
+  }
+}
+
+@mixin sm-only {
+  @include md {
+    @include sm-min {
+      @content;
+    }
+  }
+}
+
+@mixin width-container {
+  width: map-get($container-max-widths, xl);
+
+  @include xl {
+    width: map-get($container-max-widths, lg);
+  }
+
+  @include lg {
+    width: map-get($container-max-widths, md);
+  }
+
+  @include md {
+    width: map-get($container-max-widths, sm);
+  }
+
+  @include sm {
+    width: 100%;
+  }
+}

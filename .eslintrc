@@ -1,0 +1,13 @@
+{
+  "extends": ["eslint:recommended", "react-app", "plugin:@typescript-eslint/recommended", "react-app/jest", "plugin:storybook/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
+  "rules": {
+    "@typescript-eslint/no-empty-function": 1,
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/ban-types": 1,
+    "no-extra-boolean-cast": 0
+  }
+}

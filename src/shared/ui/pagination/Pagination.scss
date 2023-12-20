@@ -1,0 +1,79 @@
+@import 'shared/scss/vars';
+@import 'shared/scss/mixin';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+
+  &__page {
+    background-color: $color-primary;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 46px;
+    border: 1px solid $color-secondary;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s;
+
+    &--arrow {
+      left: 0;
+      // color: transparent;
+      color: #fff;
+
+      &-prev {
+        margin-right: auto;
+      }
+
+      &-next {
+        margin-left: auto;
+        transform: rotate(180deg);
+      }
+    }
+
+    &--number,
+    &--ellipsis {
+      display: block;
+      margin: 0 3px;
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 5px;
+    }
+
+    &--ellipsis {
+      user-select: none;
+    }
+  }
+}
+
+.pagination {
+}
+
+.pagination {
+  &__page {
+    &--selected,
+    &:hover {
+      background-color: $color-secondary;
+    }
+
+    &--selected,
+    &--number:hover {
+      color: $color-text;
+    }
+
+    &--disabled {
+      background-color: $color-disabled;
+      pointer-events: none;
+      border-color: $color-text;
+      color: $color-text;
+    }
+
+    &--number:active {
+      background-color: $color-secondary;
+      color: #fff;
+    }
+  }
+}

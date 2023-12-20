@@ -1,0 +1,55 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.upload-image {
+  margin-bottom: $input-mb;
+  &__main {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    margin-right: 20px;
+    width: 130px;
+    border: 1px solid $color-primary;
+    position: relative;
+    background-color: #fff;
+
+    &::before {
+      padding-top: 100%;
+    }
+
+    &-empty {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 9;
+      opacity: 0;
+    }
+  }
+  &__buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+  &__error {
+    margin-top: 10px;
+    color: $color-error;
+  }
+}

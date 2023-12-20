@@ -1,0 +1,45 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.comment-card {
+  display: flex;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid $color-gray;
+  &__form {
+  }
+  &__image {
+    margin-right: 20px;
+  }
+  &__content {
+    width: 100%;
+  }
+  &__author {
+    padding: 2px 10px;
+    display: inline-block;
+    background-color: $color-secondary;
+    border-radius: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+  }
+  &__head {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__date {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    margin-left: -10px;
+    margin-right: -10px;
+
+    > * {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}

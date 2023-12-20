@@ -1,0 +1,97 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  top: 0;
+  width: 20px;
+  height: 20px;
+
+  &--left {
+    margin-right: 7px;
+  }
+
+  &--right {
+    margin-left: 7px;
+  }
+
+  &--xs {
+    width: 12px;
+    height: 12px;
+
+    &.icon--left {
+      margin-right: 5px;
+    }
+    &.icon--right {
+      margin-left: 5px;
+    }
+  }
+
+  &--sm {
+    width: 16px;
+    height: 16px;
+
+    &.icon--left {
+      margin-right: 7px;
+    }
+    &.icon--right {
+      margin-left: 7px;
+    }
+  }
+
+  &--lg {
+    width: 24px;
+    height: 24px;
+
+    &.icon--left {
+      margin-right: 10px;
+    }
+    &.icon--right {
+      margin-left: 10px;
+    }
+  }
+
+  &--primary {
+    color: $color-primary;
+  }
+
+  &--black {
+    color: $color-text;
+  }
+  &--white {
+    color: #fff;
+  }
+  &--red {
+    color: $color-error;
+  }
+  &--gray {
+    color: $color-gray;
+  }
+
+  // &--black {
+  //   path[stroke] {
+  //     stroke: $color-text;
+  //   }
+  //   path[fill] {
+  //     fill: $color-text;
+  //   }
+  // }
+  // &--white {
+  //   path[stroke] {
+  //     stroke: #fff;
+  //   }
+  //   path[fill] {
+  //     fill: #fff;
+  //   }
+  // }
+  // &--red {
+  //   path[stroke] {
+  //     stroke: $color-error;
+  //   }
+  //   path[fill] {
+  //     fill: $color-error;
+  //   }
+  // }
+}

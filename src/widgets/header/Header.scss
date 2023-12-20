@@ -1,0 +1,16 @@
+@import '/src/shared/scss/vars';
+@import '/src/shared/scss/mixin';
+
+.header {
+  text-align: center;
+  background-color: #fff;
+  box-shadow: $shadow-light-primary;
+  z-index: 99;
+
+  &__line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $header-height;
+  }
+}
