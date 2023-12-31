@@ -17,11 +17,11 @@ export const MainPage = () => {
   const dispatch = useAppDispatch()
   const { data: currentMember } = useAppSelector(memberApi.endpoints.currentMember.select())
   const [searchParams, setSearchParams] = useSearchParams()
-  const order = useMemo(() => (searchParams.get('order') as PostOrderBy) ?? 'recent', [searchParams])
+  const orderParams = useMemo(() => (searchParams.get('order') as PostOrderBy | undefined) ?? undefined, [searchParams])
   const [queryPage, setQueryPage] = usePaginationQuery()
   const [page, setPage] = React.useState(queryPage)
   const [selectedPages, setSelectedPages] = React.useState([queryPage])
-  const { data: { data: posts = [], count = 0, lastPage } = {}, ...postsState } = usePostsQuery({ limit, page, order })
+  const { data: { data: posts = [], count = 0, lastPage } = {}, ...postsState } = usePostsQuery({ limit, page, order: orderParams })
 
   const onChangePage = useCallback(
     (page: number) => {
@@ -38,6 +38,7 @@ export const MainPage = () => {
 
   const onChangeTab = useCallback(
     (order: PostOrderBy) => {
+      !order && searchParams.delete('order')
       order === 'recent' ? searchParams.delete('order') : searchParams.set('order', order)
       setSearchParams(searchParams, { preventScrollReset: true })
       onChangePage(1)
@@ -48,11 +49,21 @@ export const MainPage = () => {
 
   const renderPost = useCallback(
     (page: number, limit: number, order?: PostOrderBy) => (post: Post) => {
+      const owner = getMemberRole(currentMember, post.member) === 'owner'
+
       return (
         <PostCard
           key={post.slug}
           post={post}
-          actionsSlot={<PostActions post={post} meta={{ page, order, limit }} size='md' role={getMemberRole(currentMember, post.member)} />}
+          actionsSlot={
+            <PostActions
+              post={post}
+              meta={{ page, order, limit }}
+              size='md'
+              editPermission={currentMember?.editPermission || owner}
+              deletePermission={currentMember?.deletePermission || owner}
+            />
+          }
           className='items__item'
         />
       )
@@ -67,10 +78,10 @@ export const MainPage = () => {
           <SectionTitle className='mb-50'>Posts</SectionTitle>
           <div className='tabs mb-50'>
             <div className='tabs--buttons'>
-              <Button onClick={() => onChangeTab('recent')} withoutColor={!(order === 'recent')}>
+              <Button onClick={() => onChangeTab('recent')} withoutColor={!(orderParams === undefined)}>
                 Recent
               </Button>
-              <Button onClick={() => onChangeTab('popular')} withoutColor={!(order === 'popular')}>
+              <Button onClick={() => onChangeTab('popular')} withoutColor={!(orderParams === 'popular')}>
                 Popular
               </Button>
             </div>
@@ -78,9 +89,9 @@ export const MainPage = () => {
 
           <PostList
             posts={posts}
-            renderPost={renderPost(page, limit, order)}
+            renderPost={renderPost(page, limit, orderParams)}
             afterPostsSlot={selectedPages.slice(1).map((page) => (
-              <PostsPage key={page} limit={limit} page={page} order={order} renderPost={renderPost(page, limit, order)} />
+              <PostsPage key={page} limit={limit} page={page} order={orderParams ?? 'recent'} renderPost={renderPost(page, limit, orderParams)} />
             ))}
             afterSlot={
               <>

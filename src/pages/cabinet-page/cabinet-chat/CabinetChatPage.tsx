@@ -8,9 +8,9 @@ import { useChat } from '../../../features/message/chat/model/useChat'
 import { useEffect } from 'react'
 import { CreateMessageForm } from 'features/message/create-message'
 import { readMessagesThunk } from 'features/message/read-messages'
-import './Chat.scss'
-import { MessagesPage } from './MessagesPage'
+import { MessagesShowMore } from './MessagesShowMore'
 import { LIMIT } from 'shared/const'
+import './Chat.scss'
 
 const limit = LIMIT.messages.cabinet
 
@@ -53,7 +53,7 @@ export const CabinetChatPage = () => {
 
       <div className='chat'>
         <div className='chat__user'>
-          <Author to={PATH_PAGE.profile.user.root(member.login)} image={member.avatar} name={member.login} status={member.status} />
+          <Author to={PATH_PAGE.members.member.root(member.login)} image={member.avatar} name={member.login} status={member.status} />
         </div>
 
         <div className='chat__items' ref={chatRef}>
@@ -69,7 +69,7 @@ export const CabinetChatPage = () => {
             .fill(null)
             .map((_, i) => i + 2)
             .map((page) => (
-              <MessagesPage key={page} limit={limit} page={page} login={login} currentMember={currentMember} />
+              <MessagesShowMore key={page} limit={limit} page={page} login={login} currentMember={currentMember} />
             ))}
         </div>
         <CreateMessageForm toMemberId={toMember} onComplete={onSubmit} onChange={onChange} />

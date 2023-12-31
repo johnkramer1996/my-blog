@@ -22,6 +22,6 @@ export const Default: Story = {
   args: {
     image: null,
     name: 'Vitalii',
-    to: PATH_PAGE.profile.user.root('Vitalii'),
+    to: PATH_PAGE.members.member.root('Vitalii'),
   },
 }

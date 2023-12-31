@@ -7,9 +7,9 @@ import { PostActions } from 'widgets'
 import { errorHandler } from 'shared/model'
 import { CommentsPost } from './CommentsPost'
 import { memberApi } from 'entities/member'
-import './PostPage.scss'
+import './PostShowMore.scss'
 
-export const PostPage = () => {
+export const PostShowMore = () => {
   const { slug } = useParams() as { slug: string }
   const postState = usePostDetailsQuery({ slug })
   const { data: currentMember } = useAppSelector(memberApi.endpoints.currentMember.select())
@@ -20,6 +20,10 @@ export const PostPage = () => {
 
   const { data: post } = postState
 
+  const role = getMemberRole(currentMember, post.member)
+  const hasEditPermission = currentMember?.editPermission || role === 'owner'
+  const hasDeletePermission = currentMember?.deletePermission || role === 'owner'
+
   return (
     <>
       <section className='section s-post'>
@@ -29,7 +33,7 @@ export const PostPage = () => {
           </SectionTitle>
 
           <div className='post'>
-            <PostHead post={post} actionsSlot={<PostActions post={post} role={getMemberRole(currentMember, post.member)} meta={{}} />} />
+            <PostHead post={post} actionsSlot={<PostActions post={post} editPermission={hasEditPermission} deletePermission={hasDeletePermission} />} />
             <div className='post__image image image--cover mt-20'>
               <img src={post.image} alt='' />
             </div>

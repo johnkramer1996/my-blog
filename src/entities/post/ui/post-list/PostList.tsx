@@ -2,9 +2,8 @@ import classNames from 'classnames'
 import { Post } from 'entities/post'
 import { PostCardLoader } from 'entities/post/ui/post-card-loader/PostCardLoader'
 import { PostCard, PostCardType } from 'entities/post/ui/post-card/PostCard'
-import { PATH_PAGE } from 'shared/lib'
 import { QueryFlags } from 'shared/model'
-import { Button, LoaderWrapper, SectionTitle } from 'shared/ui'
+import { LoaderWrapper, SectionTitle } from 'shared/ui'
 
 export type PostListProps = {
   posts: Post[]
@@ -37,10 +36,6 @@ export const PostList = (props: PostListProps) => {
       {!isLoading && !hasPosts ? (
         <div className='text-center'>
           <SectionTitle className='mb-30'>Nothing found</SectionTitle>
-          {/* <p>Sorry, we couldn’t find the posts you’re looking for.</p>
-          <div className='mt-50'>
-            <Button to={PATH_PAGE.root}>Go to the main page</Button>
-          </div> */}
         </div>
       ) : (
         <div className={classNames('items', { 'items--fetching': isFetching, row: isVertical }, className)}>

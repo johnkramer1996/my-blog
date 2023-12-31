@@ -9,19 +9,18 @@ type Props = {
   post: Post
   editPermission?: boolean
   deletePermission?: boolean
-  role?: MemberRoleEntity
 }
 export const PostCabinetActions = (props: Props) => {
-  const { post, editPermission: hasEditPermission, deletePermission: hasDeletePermission, role } = props
+  const { post, editPermission, deletePermission } = props
 
   return (
     <>
-      {(hasEditPermission || role === 'owner') && (
+      {editPermission && (
         <Link to={PATH_PAGE.cabinet.posts.updatePost(post.slug)}>
           <Icon type='pencil-edit' color='primary' />
         </Link>
       )}
-      {post.status === 'trash' && (hasDeletePermission || role === 'owner') && <DeletePostIcon slug={post.slug} />}
+      {post.status === 'trash' && deletePermission && <DeletePostIcon slug={post.slug} />}
     </>
   )
 }

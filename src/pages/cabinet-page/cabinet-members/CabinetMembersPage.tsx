@@ -1,14 +1,16 @@
-import { MemberCard, MembersList, memberApi, useMembersForMessageQuery } from 'entities/member'
-import { PATH_PAGE } from 'shared/lib'
 import { Button, SectionTitle } from 'shared/ui'
+import { useMembersQuery } from 'entities/member/api/member.api'
+import { MembersList } from '../../../entities/member/ui/member-list/MembersList'
+import { MemberCard } from 'entities/member'
+import { PATH_PAGE } from 'shared/lib'
 
-export const CabinetChatListPage = () => {
-  const { data: members = [] } = useMembersForMessageQuery()
+export const CabinetMembersPage = () => {
+  const { data: { data: members = [] } = {} } = useMembersQuery()
 
   return (
-    <section className='s-chat'>
+    <section className='s-members'>
       <SectionTitle className='mb-30' left>
-        Chats
+        Members
       </SectionTitle>
       <MembersList
         members={members}
@@ -27,18 +29,6 @@ export const CabinetChatListPage = () => {
           />
         )}
       />
-      {/* {members.map((member) => {
-        return (
-          <Author
-            key={member.id}
-            to={PATH_PAGE.cabinet.messages.member(member.login)}
-            image={member.avatar}
-            name={member.login}
-            status={member.status}
-            className='mb-20'
-          ></Author>
-        )
-      })} */}
     </section>
   )
 }

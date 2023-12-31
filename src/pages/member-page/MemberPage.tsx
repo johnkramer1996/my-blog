@@ -20,8 +20,8 @@ export const MemberPage = () => {
           <Sidebar
             className='col-lg-3 col-12'
             items={[
-              { to: PATH_PAGE.profile.user.root(member.login), name: 'Profile' },
-              { to: PATH_PAGE.profile.user.posts(member.login), name: 'Posts' },
+              { to: PATH_PAGE.members.member.root(member.login), name: 'Profile' },
+              { to: PATH_PAGE.members.member.posts(member.login), name: 'Posts' },
             ]}
           ></Sidebar>
           <div className='col-lg-9 col-12'>

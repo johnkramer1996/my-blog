@@ -54,7 +54,7 @@ export const CommentCard = (props: Props) => {
 
   return (
     <div className='comment-card'>
-      <Link to={PATH_PAGE.profile.user.root(comment.member.login)} className='comment-card__image image image--cover image-circle image--author'>
+      <Link to={PATH_PAGE.members.member.root(comment.member.login)} className='comment-card__image image image--cover image-circle image--author'>
         {comment.member.avatar && <img src={comment.member.avatar} alt='' />}
       </Link>
       <div className='comment-card__content'>

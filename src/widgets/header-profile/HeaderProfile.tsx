@@ -6,7 +6,7 @@ import { useOnConfirmLogout } from 'features/session/logout/lib/use-on-confirm-l
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import classNames from 'classnames'
-import { hasPermisison, memberApi } from 'entities/member'
+import { hasPermissionByMember, memberApi } from 'entities/member'
 import './HeaderProfile.scss'
 
 type Props = {
@@ -29,7 +29,7 @@ export const HeaderProfile = (props: Props) => {
   const closeDropdown = () => setOpen(false)
   const toggleDropdown = () => setOpen((p) => !p)
 
-  const items = PATH_CABINET_MENU.filter((el) => hasPermisison(currentMember, el.roles))
+  const items = PATH_CABINET_MENU.filter((el) => hasPermissionByMember(el.roles, currentMember))
 
   return (
     <div className={classNames('header-profile', props.className)}>

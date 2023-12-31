@@ -7,6 +7,7 @@ export {
   useBanMemberMutation,
   useRecoverMemberMutation,
 } from './api/member.api'
-export { hasPermisison } from './lib/has-permisison'
+export { hasPermissionByMember, hasPermisisonByRoles } from './lib/has-permisison'
 export { type Member } from './model/member.model'
 export { MemberCard } from './ui/member-card/MemberCard'
+export { MembersList } from './ui/member-list/MembersList'

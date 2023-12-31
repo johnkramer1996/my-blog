@@ -1,4 +1,5 @@
 export const memberRoutes = {
+  FIND_MEMBERS: `/members/`,
   FIND_MEMBER_BY_LOGIN: (login: string) => `/members/${login}`,
   FIND_MEMBERS_FOR_MESSAGE: '/cabinet/messages',
   FIND_CURRENT_MEMBER: '/cabinet/member',

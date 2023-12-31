@@ -11,10 +11,11 @@ const limit = LIMIT.posts.member
 
 export const MemberPostsPage = () => {
   const { login } = useParams() as { login: string }
-  const { data: member, isSuccess, error } = useMemberByLoginQuery({ login })
+  const { data: member, isLoading, isSuccess, error } = useMemberByLoginQuery({ login })
   const [page, onChangePage] = usePaginationQuery()
   const { data: { data: posts = [], count = 0 } = {}, ...postsState } = usePostsByLoginQuery({ login, limit, page })
 
+  if (isLoading) return <div>loading</div>
   if (!isSuccess) return errorHandler(error)
 
   return (

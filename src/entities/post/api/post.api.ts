@@ -15,13 +15,7 @@ import { PostStatus } from '../model/post-status'
 import { ModeratePostDto } from '../dto/moderate-post.dto'
 import { Vote } from 'shared/lib/vote'
 import { Paginated } from 'shared/model'
-
-// TODO: MOVE
-type CountPostsByAuthUser = {
-  all: number
-  byMember: number
-  byStatus: { status: PostStatus; count: number }[]
-}
+import { CountPostsByAuthUser } from '../model/count-posts-by-auth-user'
 
 export const postApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

@@ -11,7 +11,8 @@ import { PostStatus } from 'entities/post/model/post-status'
 
 type Props = {
   post: Post
-  role?: MemberRoleEntity
+  editPermission?: boolean
+  deletePermission?: boolean
   iconSize?: IconSize
   size?: VoteSize
   meta?: {
@@ -24,16 +25,16 @@ type Props = {
 }
 
 export const PostActions = (props: Props) => {
-  const { post, role, iconSize, size, meta = {} } = props
+  const { post, editPermission, deletePermission, iconSize, size, meta = {} } = props
 
   return (
     <>
-      {role === 'owner' && (
+      {editPermission && (
         <>
           <Link to={PATH_PAGE.cabinet.posts.updatePost(props.post.slug)}>
             <Icon type='pencil-edit' color='primary' size={iconSize} />
           </Link>
-          {post.status === 'trash' && <DeletePostIcon slug={props.post.slug} iconSize={iconSize} />}
+          {post.status === 'trash' && deletePermission && <DeletePostIcon slug={props.post.slug} iconSize={iconSize} />}
         </>
       )}
       {post.status === 'publish' && <AddVoteToPostGroupIcon post={post} size={size} meta={meta} />}

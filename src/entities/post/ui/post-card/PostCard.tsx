@@ -39,7 +39,6 @@ export const PostCard = (props: Props) => {
             {post.title}
           </Link>
         </h3>
-        <h3 className='h3'>{post.status}</h3>
         <div className='post-card__description mt-10'>
           <p>{post.text}</p>
         </div>

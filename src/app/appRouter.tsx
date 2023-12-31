@@ -15,35 +15,22 @@ import {
   CabinetChatListPage,
   CabinetChatPage,
   CabinetPosts,
+  CabinetMembersPage,
+  CabinetMemberPage,
 } from 'pages'
 import { BaseLayout } from './layouts/baseLayout'
 import { PATH_PAGE } from 'shared/lib'
 import { GuestGuard } from './guard/GuestGuard'
 import { AuthGuard } from './guard/AuthGuard'
+import { PermissionGuard } from './guard/PermissionGuard'
 import { MemberProfilePage } from 'pages/member-page'
-import { MemberRole, useAppSelector } from 'shared/model'
-import { ReactElement } from 'react'
-import { hasPermisison, memberApi } from 'entities/member'
 import { PATH_PAGE_PERMISSION } from 'shared/lib/paths'
-
-export type Props = {
-  permission: MemberRole[]
-  children: ReactElement
-}
-
-export const PermissionGuard = ({ permission, children }: Props): ReactElement => {
-  const { data: currentMember } = useAppSelector(memberApi.endpoints.currentMember.select())
-
-  if (permission.length && !hasPermisison(currentMember, permission)) return <Navigate to={PATH_PAGE.root} replace />
-
-  return children
-}
 
 export const appRouter = () => {
   return createBrowserRouter([
     {
       element: <BaseLayout />,
-      errorElement: <div>error</div>,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: PATH_PAGE.signIn,
@@ -74,15 +61,15 @@ export const appRouter = () => {
           element: <PostPage />,
         },
         {
-          path: PATH_PAGE.profile.user.root(':login'),
+          path: PATH_PAGE.members.member.root(':login'),
           element: <MemberPage />,
           children: [
             {
-              path: PATH_PAGE.profile.user.root(':login'),
+              path: PATH_PAGE.members.member.root(':login'),
               element: <MemberProfilePage />,
             },
             {
-              path: PATH_PAGE.profile.user.posts(':login'),
+              path: PATH_PAGE.members.member.posts(':login'),
               element: <MemberPostsPage />,
             },
           ],
@@ -91,33 +78,63 @@ export const appRouter = () => {
           path: PATH_PAGE.cabinet.root,
           element: (
             <GuestGuard>
-              <CabinetPage />
+              <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.root}>
+                <CabinetPage />
+              </PermissionGuard>
             </GuestGuard>
           ),
           children: [
             {
               path: PATH_PAGE.cabinet.root,
+              element: <CabinetDashboard />,
+            },
+            {
+              path: PATH_PAGE.cabinet.posts.root,
               element: (
-                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.root}>
-                  <CabinetDashboard />
+                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.posts.root}>
+                  <CabinetPosts />
                 </PermissionGuard>
               ),
             },
             {
-              path: PATH_PAGE.cabinet.posts.root,
-              element: <CabinetPosts />,
+              path: PATH_PAGE.cabinet.members.root,
+              element: (
+                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.members.root}>
+                  <CabinetMembersPage />
+                </PermissionGuard>
+              ),
+            },
+            {
+              path: PATH_PAGE.cabinet.members.member(':login'),
+              element: (
+                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.members.member}>
+                  <CabinetMemberPage />
+                </PermissionGuard>
+              ),
             },
             {
               path: PATH_PAGE.cabinet.settings,
-              element: <CabinetSettings />,
+              element: (
+                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.settings}>
+                  <CabinetSettings />
+                </PermissionGuard>
+              ),
             },
             {
               path: PATH_PAGE.cabinet.messages.root,
-              element: <CabinetChatListPage />,
+              element: (
+                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.messages.root}>
+                  <CabinetChatListPage />
+                </PermissionGuard>
+              ),
             },
             {
               path: PATH_PAGE.cabinet.messages.member(':login'),
-              element: <CabinetChatPage />,
+              element: (
+                <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.messages.member}>
+                  <CabinetChatPage />
+                </PermissionGuard>
+              ),
             },
           ],
         },
@@ -125,7 +142,9 @@ export const appRouter = () => {
           path: PATH_PAGE.cabinet.posts.createPost,
           element: (
             <GuestGuard>
-              <CreatePostPage />
+              <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.posts.createPost}>
+                <CreatePostPage />
+              </PermissionGuard>
             </GuestGuard>
           ),
         },
@@ -133,7 +152,9 @@ export const appRouter = () => {
           path: PATH_PAGE.cabinet.posts.updatePost(':slug'),
           element: (
             <GuestGuard>
-              <UpdatePostPage />
+              <PermissionGuard permission={PATH_PAGE_PERMISSION.cabinet.posts.updatePost}>
+                <UpdatePostPage />
+              </PermissionGuard>
             </GuestGuard>
           ),
         },

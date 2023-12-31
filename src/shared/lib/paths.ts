@@ -9,11 +9,11 @@ export const PATH_PAGE = {
     root: '/',
     slug: (slug: string) => `/posts/${slug}`,
   },
-  profile: {
-    root: `/profile`,
-    user: {
-      root: (login: string) => `/profile/${login}`,
-      posts: (login: string) => `/profile/${login}/posts`,
+  members: {
+    root: `/members`,
+    member: {
+      root: (login: string) => `/members/${login}`,
+      posts: (login: string) => `/members/${login}/posts`,
     },
   },
   cabinet: {
@@ -25,8 +25,8 @@ export const PATH_PAGE = {
       updatePost: (slug: string) => `/cabinet/posts/${slug}/update`,
     },
     members: {
-      root: `/cabinet/users`,
-      member: (login: string) => `/cabinet/users/${login}`,
+      root: `/cabinet/members`,
+      member: (login: string) => `/cabinet/members/${login}`,
     },
     messages: {
       root: `/cabinet/messages`,
@@ -51,8 +51,8 @@ export const PATH_PAGE_PERMISSION = {
       member: [MEMBER_ROLES.admin],
     },
     messages: {
-      root: [MEMBER_ROLES.editor], // all
-      member: [], // all
+      root: [MEMBER_ROLES.editor],
+      member: [],
     },
   },
 }
@@ -63,8 +63,6 @@ export const PATH_CABINET_MENU: { to: string; name: string; roles: MemberRole[] 
   { to: PATH_PAGE.cabinet.root, name: 'Dashboard', roles: PATH_PAGE_PERMISSION.cabinet.root },
   { to: PATH_PAGE.cabinet.posts.root, name: 'Posts', roles: PATH_PAGE_PERMISSION.cabinet.posts.root },
   { to: PATH_PAGE.cabinet.members.root, name: 'Members', roles: PATH_PAGE_PERMISSION.cabinet.members.root },
-  // TODO: DROP DOWN fOR STATUSES
-  // TODO: FAVORITE
   { to: PATH_PAGE.cabinet.settings, name: 'Settings', roles: PATH_PAGE_PERMISSION.cabinet.settings },
   { to: PATH_PAGE.cabinet.messages.root, name: 'Messages', roles: PATH_PAGE_PERMISSION.cabinet.messages.root },
 ]

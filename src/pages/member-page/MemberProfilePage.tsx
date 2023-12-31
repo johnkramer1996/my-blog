@@ -2,36 +2,26 @@ import React from 'react'
 import { MemberCard, memberApi, useBanMemberMutation, useMemberByLoginQuery, useRecoverMemberMutation } from 'entities/member'
 import { useParams } from 'react-router-dom'
 import { PATH_PAGE, notifySuccess, notifyUnknown } from 'shared/lib'
-import { MemberRole, errorHandler, useAppSelector } from 'shared/model'
-import { Button, Form, SectionTitle } from 'shared/ui'
-import { RadioGroupForm } from 'shared/ui/form/RadioGroupForm'
-import { hasPermisison } from 'entities/member'
+import { MEMBER_ROLES, MemberRole, errorHandler, useAppSelector } from 'shared/model'
+import { Button, SectionTitle } from 'shared/ui'
+import { hasPermissionByMember } from 'entities/member'
 import { useAttachOrDetachRoleMutation } from 'entities/member/api/member.api'
 
 export const MemberProfilePage = () => {
   const { login } = useParams() as { login: string }
-  const { data: member, isSuccess, error } = useMemberByLoginQuery({ login })
+  const { data: member, isLoading, isSuccess, error } = useMemberByLoginQuery({ login })
   const [AttachOrDetachRole] = useAttachOrDetachRoleMutation()
   const [banFn] = useBanMemberMutation()
   const [recoverFn] = useRecoverMemberMutation()
 
   const { data: currentMember } = useAppSelector(memberApi.endpoints.currentMember.select())
 
+  if (isLoading) return <div>loading</div>
   if (!isSuccess) return errorHandler(error)
 
   const onBanToggle = async () => {
     try {
       await (member.isBanned ? recoverFn({ login }).unwrap() : banFn({ login }).unwrap())
-      notifySuccess('success')
-    } catch (e) {
-      notifyUnknown(e)
-    }
-  }
-
-  const onRoleChange = async (name: string, role: MemberRole, checked: boolean) => {
-    try {
-      console.log({ checked })
-      await AttachOrDetachRole({ login, role, action: checked ? 'attach' : 'detach' }).unwrap()
       notifySuccess('success')
     } catch (e) {
       notifyUnknown(e)
@@ -50,21 +40,6 @@ export const MemberProfilePage = () => {
         member={member}
         actionsSlot={
           <>
-            <Form defaultValues={{ roles: member?.roles ?? [] }}>
-              <RadioGroupForm<{ roles: MemberRole[] }, MemberRole>
-                label='Roles'
-                name='roles'
-                type='checkbox'
-                options={[
-                  { label: 'Admin', value: 'admin' },
-                  { label: 'Editor', value: 'editor' },
-                  { label: 'Author', value: 'author' },
-                  { label: 'Contributor', value: 'contributor' },
-                  { label: 'Subscriber', value: 'subscriber' },
-                ]}
-                onChange={onRoleChange}
-              />
-            </Form>
             {isOwner ? (
               <Button to={PATH_PAGE.cabinet.root} className='mt-10' maxWidth>
                 Move to cabinet
@@ -74,7 +49,7 @@ export const MemberProfilePage = () => {
                 Write a message
               </Button>
             )}
-            {hasPermisison(currentMember, ['admin', 'editor']) &&
+            {hasPermissionByMember([MEMBER_ROLES.admin, MEMBER_ROLES.editor], currentMember) &&
               !isOwner &&
               (member.isBanned ? (
                 <Button className='mt-20' onClick={onBanToggle} border maxWidth>

@@ -9,4 +9,6 @@ export type Member = {
   login: string
   status: 'online' | 'offline'
   isBanned: boolean
+  editPermission: boolean
+  deletePermission: boolean
 }

@@ -1,4 +1,4 @@
-import { hasPermisison, memberApi } from 'entities/member'
+import { hasPermissionByMember, memberApi } from 'entities/member'
 import { Outlet } from 'react-router-dom'
 import { PATH_CABINET_MENU } from 'shared/lib/paths'
 import { useAppSelector } from 'shared/model'
@@ -6,7 +6,7 @@ import { Sidebar } from 'widgets/sidebar/Sidebar'
 
 export const CabinetPage = () => {
   const { data: currentMember } = useAppSelector(memberApi.endpoints.currentMember.select())
-  const items = PATH_CABINET_MENU.filter((el) => hasPermisison(currentMember, el.roles))
+  const items = PATH_CABINET_MENU.filter((el) => hasPermissionByMember(el.roles, currentMember))
 
   return (
     <>

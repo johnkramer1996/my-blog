@@ -17,7 +17,7 @@ export const PostHead = (props: Props) => {
       <ul className='post-head__meta'>
         <li className='post-head__meta-item'>
           <Author
-            to={PATH_PAGE.profile.user.root(post.member.login)}
+            to={PATH_PAGE.members.member.root(post.member.login)}
             image={post.member.avatar}
             name={post.member.login}
             status={post.member.status}

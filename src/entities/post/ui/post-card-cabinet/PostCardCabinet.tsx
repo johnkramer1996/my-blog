@@ -15,7 +15,7 @@ export const PostCardCabinet = (props: Props) => {
   const to = PATH_PAGE.posts.slug(post.slug)
 
   return (
-    <div key={post.id} className={classNames('post-card post-card--horizontal item-bg')}>
+    <div className={classNames('post-card post-card--horizontal item-bg')}>
       <div className='item-bg__bg'></div>
 
       <div className='post-card__content'>

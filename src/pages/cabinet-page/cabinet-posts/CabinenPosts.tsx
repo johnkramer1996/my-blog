@@ -1,14 +1,14 @@
 import { PostList } from 'entities/post'
 import { LIMIT } from 'shared/const/limit'
-import { deletePermission, editPermission, errorHandler, getMemberRole, useAppSelector, usePaginationQuery } from 'shared/model'
+import { errorHandler, getMemberRole, useAppSelector, usePaginationQuery } from 'shared/model'
 import { Button, Loader, Pagination, SectionTitle } from 'shared/ui'
 import { PostStatus } from 'entities/post/model/post-status'
 import { useCallback, useMemo } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useCountPostsByAuthUserQuery, usePostsByAuthUserQuery } from 'entities/post/api/post.api'
 import { PATH_PAGE } from 'shared/lib'
-import { hasPermisison, memberApi } from 'entities/member'
-import { PostCardCabinet } from './PostCardCabinet'
+import { memberApi } from 'entities/member'
+import { PostCardCabinet } from '../../../entities/post/ui/post-card-cabinet/PostCardCabinet'
 import { PostCabinetActions } from 'widgets'
 import { ChangePostStatus } from 'features/post/change-post-status'
 
@@ -40,9 +40,6 @@ export const CabinetPosts = () => {
 
   if (isLoading) return <Loader />
   if (!isSuccess) return errorHandler(error)
-
-  const hasEditPermission = hasPermisison(currentMember, editPermission)
-  const hasDeletePermission = hasPermisison(currentMember, deletePermission)
 
   return (
     <>
@@ -79,20 +76,24 @@ export const CabinetPosts = () => {
         <PostList
           posts={posts}
           type='horizontal'
-          renderPost={(post) => (
-            <PostCardCabinet
-              post={post}
-              actionSlot={
-                <PostCabinetActions
-                  post={post}
-                  editPermission={hasEditPermission}
-                  deletePermission={hasDeletePermission}
-                  role={getMemberRole(currentMember, post.member)}
-                />
-              }
-              moderationSlot={<ChangePostStatus post={post} />}
-            />
-          )}
+          renderPost={(post) => {
+            const owner = getMemberRole(currentMember, post.member) === 'owner'
+
+            return (
+              <PostCardCabinet
+                key={post.id}
+                post={post}
+                actionSlot={
+                  <PostCabinetActions
+                    post={post}
+                    editPermission={currentMember?.editPermission || owner}
+                    deletePermission={currentMember?.deletePermission || owner}
+                  />
+                }
+                moderationSlot={<ChangePostStatus post={post} />}
+              />
+            )
+          }}
           afterSlot={
             <>
               <Pagination onChangePage={onChangePage} count={count} page={page} limit={limit} className='mt-50' />

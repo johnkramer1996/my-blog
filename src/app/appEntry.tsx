@@ -10,7 +10,9 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const root = document.getElementById('root') as HTMLElement
 
-async function initApp() {}
+const initApp = async () => {
+  return Promise.resolve()
+}
 
 initApp().then(() =>
   createRoot(root).render(

@@ -49,7 +49,7 @@ export const CreateOrUpdateCommentForm = (props: Props) => {
           className={classNames('comment-form', { 'comment-form--loading': createCommentState.isLoading || updateCommentState.isLoading })}
         >
           {type === 'create' && (
-            <Link to={PATH_PAGE.profile.user.root(currentMember.login)} className='comment-form__image image image--cover image-circle image--author'>
+            <Link to={PATH_PAGE.members.member.root(currentMember.login)} className='comment-form__image image image--cover image-circle image--author'>
               {currentMember.avatar && <img src={currentMember.avatar} alt='' />}
             </Link>
           )}

@@ -7,7 +7,7 @@ type Props = {
   login: string
   currentMember?: Member
 }
-export const MessagesPage = (props: Props) => {
+export const MessagesShowMore = (props: Props) => {
   const { page, limit, login, currentMember } = props
   const { data: { data: messages = [] } = {}, isLoading } = useFindMessagesByLoginQuery({ page, limit, login }, { skip: !login })
 

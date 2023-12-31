@@ -4,9 +4,15 @@ import { memberRoutes } from './member.routes'
 import { Member } from '../model/member.model'
 import { MemberRole } from '../../../shared/model/member-role'
 import { MemberDto } from '../dto/member.dto'
+import { Paginated } from 'shared/model'
 
 export const memberApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    members: builder.query<Paginated<Member>, void>({
+      query: () => ({ url: memberRoutes.FIND_MEMBERS }),
+      transformResponse: (response: Paginated<MemberDto>) => ({ ...response, data: response.data.map(memberMapper) }),
+      keepUnusedDataFor: 0,
+    }),
     memberByLogin: builder.query<Member, { login: string }>({
       query: ({ login }) => ({ url: memberRoutes.FIND_MEMBER_BY_LOGIN(login) }),
       transformResponse: memberMapper,
@@ -49,6 +55,7 @@ export const memberApi = baseApi.injectEndpoints({
 })
 
 export const {
+  useMembersQuery,
   useMemberByLoginQuery,
   useCurrentMemberQuery,
   useMembersForMessageQuery,
