@@ -2,7 +2,7 @@ import React, { useCallback, useMemo } from 'react'
 import { Post, PostList, PostOrderBy, postApi, usePostsQuery } from 'entities/post'
 import { PostCard } from 'entities/post'
 import { LIMIT } from 'shared/const'
-import { getMemberRole, useAppDispatch, useAppSelector, usePaginationQuery } from 'shared/model'
+import { useAppDispatch, useAppSelector, usePaginationQuery } from 'shared/model'
 import { Pagination, SectionTitle } from 'shared/ui'
 import { Button, Icon } from 'shared/ui'
 import { PostsPage } from './PostsPage'
@@ -10,6 +10,7 @@ import { PostActions } from 'widgets'
 import { POST_TAG } from 'shared/api'
 import { useSearchParams } from 'react-router-dom'
 import { memberApi } from 'entities/member'
+import { getMemberRole } from 'shared/lib'
 
 const limit = LIMIT.posts.main
 

@@ -1,9 +1,10 @@
+import React from 'react'
 import { useMemberByLoginQuery } from 'entities/member'
 import { usePostsByLoginQuery } from 'entities/post/api/post.api'
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { LIMIT } from 'shared/const'
-import { errorHandler, usePaginationQuery } from 'shared/model'
+import { errorHandler } from 'shared/lib'
+import { usePaginationQuery } from 'shared/model'
 import { SectionTitle } from 'shared/ui'
 import { PostListWidget } from 'widgets'
 
@@ -16,6 +17,7 @@ export const MemberPostsPage = () => {
   const { data: { data: posts = [], count = 0 } = {}, ...postsState } = usePostsByLoginQuery({ login, limit, page })
 
   if (isLoading) return <div>loading</div>
+
   if (!isSuccess) return errorHandler(error)
 
   return (

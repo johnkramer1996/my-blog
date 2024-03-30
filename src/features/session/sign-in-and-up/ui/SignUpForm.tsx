@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'shared/model'
 import { useCallback } from 'react'
 import { Button, ButtonForm, Form, InputForm, SectionTitle } from 'shared/ui'
 import classNames from 'classnames'
-import { signUpThunk } from '../model/sign-up-thunk'
+import { signUpThunk } from '../model/sign-up.thunk'
 import { SignUpFormSchema, signUpFormSchema } from '../model/sign-up-form-schema'
 
 type Props = {

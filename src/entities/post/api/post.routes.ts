@@ -5,7 +5,7 @@ export const postRoutes = {
   FIND_POSTS_BY_AUTH_USER: '/cabinet/posts',
   COUNT_POSTS_BY_AUTH_USER: '/cabinet/posts/count',
   FIND_POSTS_BY_LOGIN: (login: string) => `/members/${login}/posts`,
-  FIND_POST: (slug: string) => `/posts/${slug}`,
+  FIND_POST_BY_SLUG: (slug: string) => `/posts/${slug}`,
   CREATE_POST: `/posts/`,
   UPDATE_POST: (slug: string) => `/posts/${slug}`,
   DELETE_POST: (slug: string) => `/posts/${slug}`,

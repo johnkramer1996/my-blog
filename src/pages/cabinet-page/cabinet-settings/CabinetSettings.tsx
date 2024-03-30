@@ -2,7 +2,7 @@ import { useCurrentUserQuery } from 'entities/user'
 import { Preloader } from 'shared/ui'
 import { SectionTitle } from 'shared/ui'
 import { UserSettingsForm } from 'features/user'
-import { errorHandler } from 'shared/model'
+import { errorHandler } from 'shared/lib'
 
 export const CabinetSettings = () => {
   const currentUser = useCurrentUserQuery()

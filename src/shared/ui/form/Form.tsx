@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { notifyUnknown } from 'shared/lib'
-import { ReactNode, useEffect, useMemo } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { DefaultValues, FieldValues, SubmitHandler, useForm, FormProvider } from 'react-hook-form'
 import { ZodSchema } from 'zod'
 import classNames from 'classnames'
@@ -31,7 +31,6 @@ export const Form = <TFormValues extends FieldValues>(props: Props<TFormValues>)
     try {
       onSubmit && (await onSubmit(data))
     } catch (e) {
-      console.log({ e })
       notifyUnknown(e)
       methods.setError('root.serverError', { message: 'server error' })
     }

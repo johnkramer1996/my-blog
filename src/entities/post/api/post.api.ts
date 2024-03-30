@@ -36,7 +36,7 @@ export const postApi = baseApi.injectEndpoints({
       },
     }),
     postDetails: builder.query<PostDetails, { slug: string }>({
-      query: ({ slug }) => ({ url: postRoutes.FIND_POST(slug) }),
+      query: ({ slug }) => ({ url: postRoutes.FIND_POST_BY_SLUG(slug) }),
       transformResponse: postDetailsMapper,
       providesTags: (result, error, arg) => [{ type: POST_TAG, id: arg.slug }],
     }),

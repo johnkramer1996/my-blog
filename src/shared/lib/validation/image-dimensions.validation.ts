@@ -5,7 +5,7 @@ export const imageDimensionsValidation =
   async (file: File) => {
     if (!file) return true
     const { width, height } = await getImageDimensions(file)
-    console.log(width, height)
+
     const result = minWidth < width && width <= maxWidth && minHeight < height && height <= maxHeight
     return result
   }

@@ -1,10 +1,11 @@
 import { useCallback } from 'react'
 import { Pagination } from 'shared/ui'
 import { PostActions } from 'widgets'
-import { deletePermission, editPermission, getMemberRole, useAppSelector } from 'shared/model'
+import { useAppSelector } from 'shared/model'
 import { Post, PostCard, PostList, PostListProps } from 'entities/post'
 import { memberApi } from 'entities/member'
 import { PostStatus } from 'entities/post/model/post-status'
+import { getMemberRole } from 'shared/lib'
 
 type Props = {
   count: number

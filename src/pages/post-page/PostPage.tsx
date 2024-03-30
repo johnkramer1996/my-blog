@@ -1,15 +1,14 @@
-import React from 'react'
 import { Preloader, SectionTitle } from 'shared/ui'
 import { PostHead, usePostDetailsQuery } from 'entities/post'
 import { useParams } from 'react-router-dom'
-import { getMemberRole, useAppSelector } from 'shared/model'
+import { useAppSelector } from 'shared/model'
 import { PostActions } from 'widgets'
-import { errorHandler } from 'shared/model'
+import { errorHandler, getMemberRole } from 'shared/lib'
 import { CommentsPost } from './CommentsPost'
 import { memberApi } from 'entities/member'
-import './PostShowMore.scss'
+import './PostPage.scss'
 
-export const PostShowMore = () => {
+export const PostPage = () => {
   const { slug } = useParams() as { slug: string }
   const postState = usePostDetailsQuery({ slug })
   const { data: currentMember } = useAppSelector(memberApi.endpoints.currentMember.select())

@@ -1,8 +1,8 @@
 import { memberApi, useMemberByLoginQuery } from 'entities/member'
-import { Link, Navigate, useParams } from 'react-router-dom'
-import { errorHandler, useAppDispatch, useAppSelector } from 'shared/model'
-import { Author, Icon, SectionTitle } from 'shared/ui'
-import { PATH_PAGE } from 'shared/lib'
+import { Navigate, useParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from 'shared/model'
+import { Author, SectionTitle } from 'shared/ui'
+import { PATH_PAGE, errorHandler } from 'shared/lib'
 import { MessageCard, useFindMessagesByLoginQuery } from 'entities/message'
 import { useChat } from '../../../features/message/chat/model/useChat'
 import { useEffect } from 'react'
@@ -28,7 +28,7 @@ export const CabinetChatPage = () => {
   const fromMember = currentMember?.id ?? ''
   const toMember = member?.id ?? ''
 
-  const { isUserTyping, isOnline, page, onSubmit, onChange, onEmit, chatRef } = useChat({ toMember, fromMember, messages })
+  const { isUserTyping, page, onSubmit, onChange, onEmit, chatRef } = useChat({ toMember, fromMember, messages })
 
   useEffect(() => {
     if (!(toMember && fromMember)) return

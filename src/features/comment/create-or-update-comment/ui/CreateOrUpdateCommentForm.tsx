@@ -35,7 +35,7 @@ export const CreateOrUpdateCommentForm = (props: Props) => {
           meta: { parentParentId: props.parentComment?.parentId || undefined, ...props.meta },
           text: data.text,
         }).unwrap()
-    notifySuccess('You have successfully created post')
+    notifySuccess(`You have successfully ${type === 'update' ? 'updated' : 'created'} comment`)
     onComplete && onComplete()
   }
 
@@ -75,12 +75,8 @@ export const SignInButton = (props: SignInButtonProps) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  console.log(location.pathname)
-
   const onSignIn = () => {
-    navigate(PATH_PAGE.signIn, {
-      state: { returnUrl: returnUrl || location.pathname },
-    })
+    navigate(PATH_PAGE.signIn, { state: { returnUrl: returnUrl || location.pathname } })
   }
 
   return (

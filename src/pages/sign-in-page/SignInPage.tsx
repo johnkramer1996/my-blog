@@ -1,5 +1,4 @@
-import { SignInForm } from 'features/session/sign-in-and-up'
-import { SignUpForm } from 'features/session/sign-in-and-up/ui/SignUpForm'
+import { SignInForm, SignUpForm } from 'features/session/sign-in-and-up'
 import { useCallback } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { PATH_PAGE } from 'shared/lib'

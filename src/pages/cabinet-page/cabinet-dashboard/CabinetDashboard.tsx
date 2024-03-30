@@ -1,9 +1,9 @@
 import { memberApi } from 'entities/member'
 import { userApi } from 'entities/user'
 import { Link } from 'react-router-dom'
-import { PATH_PAGE } from 'shared/lib'
-import { errorHandler, useAppSelector } from 'shared/model'
-import { Icon, Preloader, SectionTitle } from 'shared/ui'
+import { PATH_PAGE, errorHandler } from 'shared/lib'
+import { useAppSelector } from 'shared/model'
+import { Icon, SectionTitle } from 'shared/ui'
 import { Dashboard } from 'widgets'
 
 export const CabinetDashboard = () => {

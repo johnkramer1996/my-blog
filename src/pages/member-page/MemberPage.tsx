@@ -1,7 +1,7 @@
 import { Outlet, useParams } from 'react-router-dom'
 import { Preloader } from 'shared/ui'
 import { useMemberByLoginQuery } from 'entities/member'
-import { errorHandler } from 'shared/model'
+import { errorHandler } from 'shared/lib'
 import { Sidebar } from 'widgets'
 import { PATH_PAGE } from 'shared/lib'
 

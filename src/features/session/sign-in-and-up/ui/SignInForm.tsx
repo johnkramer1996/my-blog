@@ -31,14 +31,14 @@ export function SignInForm(props: Props) {
       {isAuth ? (
         <div className='item-bg-wrapper item-bg-wrapper--padding'>
           <div className='item-bg item-bg--full'></div>
-          <SectionTitle subtitle='Ви авторизовані'></SectionTitle>
+          <SectionTitle subtitle='You are authorized'></SectionTitle>
         </div>
       ) : (
         <Form<SignInFormSchema>
           onSubmit={onSubmitHandler}
           validationSchema={signInFormSchema}
           defaultValues={{ login: 'vitali', password: '12345678' }}
-          className={classNames('', props.className)}
+          className={classNames(props.className)}
         >
           <InputForm<SignInFormSchema> type='text' name='login' label='Login' />
           <InputForm<SignInFormSchema> type='password' name='password' label='Password' />

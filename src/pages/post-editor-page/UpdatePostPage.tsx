@@ -4,7 +4,7 @@ import { Preloader, SectionTitle } from 'shared/ui'
 import { CreatePostForm, UpdatePostForm } from 'features/post/create-post'
 import { usePostDetailsQuery } from 'entities/post'
 import { useMemo } from 'react'
-import { errorHandler } from 'shared/model'
+import { errorHandler } from 'shared/lib'
 
 export const UpdatePostPage = () => {
   const { slug } = useParams() as { slug: string }

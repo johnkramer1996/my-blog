@@ -1,5 +1,3 @@
-export { errorHandler } from './error-handler'
-export { getMemberRole } from './get-member-role'
 export { useAppDispatch, useAppSelector } from './hooks'
 export { type MemberRoleEntity } from './member-role-entity'
 export { type MemberRole, MEMBER_ROLES } from './member-role'

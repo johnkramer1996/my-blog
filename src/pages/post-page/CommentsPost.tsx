@@ -3,7 +3,7 @@ import { Button, Pagination, SectionTitle } from 'shared/ui'
 import { Comment, CommentList } from 'entities/comment'
 import { CreateOrUpdateCommentForm } from 'features/comment/create-or-update-comment'
 import { useCommentsQuery } from 'entities/comment'
-import { getMemberRole, usePaginationQuery } from 'shared/model'
+import { usePaginationQuery } from 'shared/model'
 import { memberApi } from 'entities/member'
 import { useAppSelector } from 'shared/model'
 import { CommentCard, CommentCardState } from 'entities/comment'
@@ -11,6 +11,7 @@ import { CommentActions } from 'widgets'
 import { useSignInPopup } from 'features/session/sign-in-and-up'
 import { Post } from 'entities/post'
 import { LIMIT } from 'shared/const'
+import { getMemberRole } from 'shared/lib'
 
 type Props = {
   post: Post

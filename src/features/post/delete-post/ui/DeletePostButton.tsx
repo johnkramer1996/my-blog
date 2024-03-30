@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Icon } from 'shared/ui'
+import { Button, ButtonProps } from 'shared/ui'
 import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { useDeletePopup } from '../lib/use-delete-popup'
 

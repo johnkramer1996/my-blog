@@ -1,4 +1,3 @@
-import { useDeletePostMutation } from 'entities/post/api/post.api'
 import { notifySuccess, notifyUnknown } from 'shared/lib'
 import React from 'react'
 import { useConfirmPopup } from 'shared/model'
@@ -19,11 +18,7 @@ export const useDeletePopup = (
       title: 'Are you really want remove comment?',
       onConfirm: async () => {
         try {
-          await deleteComment({
-            slug: params.slug,
-            commentId: params.comment.id,
-            meta: params.meta,
-          }).unwrap()
+          await deleteComment({ slug: params.slug, commentId: params.comment.id, meta: params.meta }).unwrap()
           onComplete && onComplete()
           notifySuccess(`You have successfully deleted post`)
         } catch (e) {
